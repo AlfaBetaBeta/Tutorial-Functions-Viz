@@ -1,5 +1,3 @@
-# INDIVIDUAL WORK
-
 #### (1) FUNCTIONS AND CONTROL STATEMENTS ####
 
 # Create a function that manipulates the variables in a dataframe and returns the updated dataframe as follows:
@@ -172,8 +170,7 @@ now() - time_start # Time difference of 0.327656 secs
 
 # The time difference values shown above are illustrative and depend on execution, but the general pattern
 # is for version 4 to be the most efficient. The proper way to test this would be via a similar tool to
-# the timeit library in python. It was not possible to include such study in this submission due to time
-# constraints.
+# the timeit library in python.
 
 
 #### (2) VISUALIZATION ####
