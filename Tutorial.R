@@ -169,8 +169,30 @@ df_out <- df_convert4(dummy_df)
 now() - time_start # Time difference of 0.327656 secs
 
 # The time difference values shown above are illustrative and depend on execution, but the general pattern
-# is for version 4 to be the most efficient. The proper way to test this would be via a similar tool to
-# the timeit library in python.
+# is for version 4 to be the most efficient. A more proper way to test this is by resorting to the microbenchmark
+# library, a (more or less) standard way in R of measuring execution times. 
+install.packages('microbenchmark')
+library(microbenchmark)
+
+microbenchmark(df_convert(df_IN), df_convert2(df_IN), df_convert3(df_IN), df_convert4(df_IN), times = 1000)
+# Unit: microseconds
+#               expr      min       lq     mean    median       uq       max neval
+#  df_convert(df_IN)  633.401  739.867 1020.294  787.9865  842.911 145476.03  1000
+# df_convert2(df_IN)  835.603  976.189 1131.164 1020.0915 1082.622  13531.99  1000
+# df_convert3(df_IN) 3362.077 3756.000 4186.958 3929.8895 4135.111  31044.45  1000
+# df_convert4(df_IN) 1925.886 2209.399 2720.823 2304.5500 2424.128  19289.17  1000
+
+microbenchmark(df_convert(dummy_df), df_convert2(dummy_df), df_convert3(dummy_df), df_convert4(dummy_df), times = 50)
+# Unit: milliseconds
+#                  expr       min        lq      mean    median        uq       max neval
+#  df_convert(dummy_df) 4906.7735 5088.5373 5227.4871 5250.2758 5341.9138 5820.1492    50
+# df_convert2(dummy_df)  478.2488  507.4778  547.7808  528.9847  588.6117  747.5032    50
+# df_convert3(dummy_df) 1074.1151 1148.8677 1208.9107 1191.4299 1251.3250 1681.2589    50
+# df_convert4(dummy_df)  296.2549  310.0339  324.6152  314.1556  327.8421  423.2970    50
+
+# As anticipated, version 4 pays off when the number of columns to process becomes significant.
+# With `df_IN` this is not the case, and the overhead of additional operations makes all alternatives
+# less efficient than version 1 (indiscernible for the user, though).
 
 
 #### (2) VISUALIZATION ####
