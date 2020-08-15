@@ -10,4 +10,4 @@ This tutorial consists on two exercises:
 
 * Analysis and visualisation of synthetic patients' data with hypertension/diabetes. Execution of the R file generates the necessary visualisations and stores them locally. Illustratively, the grid of histograms wrapped by gender, age and condition are shown below.
 
-<img src="https://github.com/AlfaBetaBeta/Tutorial-Functions-Viz/blob/master/img/encodings/Grid_of_histograms.png" width=100% height=100%>
+<img src="https://github.com/AlfaBetaBeta/Tutorial-Functions-Viz/blob/master/img/Grid_of_histograms.png" width=100% height=100%>
